@@ -46,23 +46,11 @@ TOP_N_RERANK = 8  # after rerank
 # ── Paper metadata ───────────────────────────────────────────────────────────
 
 PAPERS: dict[str, dict] = {
-    "2405.20059v1": {
-        "title": "Spectral Mapping of Singing Voices: U-Net-Assisted Vocal Segmentation",
-        "short": "SoundSeg",
-        "year": 2024,
-        "url": "https://arxiv.org/abs/2405.20059",
-    },
-    "2408.02654v1": {
-        "title": "On Using Quasirandom Sequences in Machine Learning for Model Weight Initialization",
-        "short": "QRNG Init",
-        "year": 2024,
-        "url": "https://arxiv.org/abs/2408.02654",
-    },
-    "2506.23985v1": {
-        "title": "Lock Prediction for Zero-Downtime Database Encryption",
-        "short": "Lock Prediction",
-        "year": 2025,
-        "url": "https://arxiv.org/abs/2506.23985",
+    "Adam_Sorrenti_resume_min": {
+        "title": "Adam Sorrenti – Resume",
+        "short": "Resume",
+        "year": 2026,
+        "url": "https://linkedin.com/in/adam-sorrenti",
     },
     "2602.07698v1": {
         "title": "On Sequence-to-Sequence Models for Automated Log Parsing",
@@ -70,13 +58,45 @@ PAPERS: dict[str, dict] = {
         "year": 2026,
         "url": "https://arxiv.org/abs/2602.07698",
     },
-    "Adam_Sorrenti_resume_min": {
-        "title": "Adam Sorrenti – Resume",
-        "short": "Resume",
-        "year": 2026,
-        "url": "https://linkedin.com/in/adam-sorrenti",
+    "2506.23985v1": {
+        "title": "Lock Prediction for Zero-Downtime Database Encryption",
+        "short": "Lock Prediction",
+        "year": 2025,
+        "url": "https://arxiv.org/abs/2506.23985",
+    },
+    "2408.02654v1": {
+        "title": "On Using Quasirandom Sequences in Machine Learning for Model Weight Initialization",
+        "short": "QRNG Init",
+        "year": 2024,
+        "url": "https://arxiv.org/abs/2408.02654",
+    },
+    "2405.20059v1": {
+        "title": "Spectral Mapping of Singing Voices: U-Net-Assisted Vocal Segmentation",
+        "short": "SoundSeg",
+        "year": 2024,
+        "url": "https://arxiv.org/abs/2405.20059",
     },
 }
+
+
+# ── System Prompt ────────────────────────────────────────────────────────────
+
+SYSTEM_PROMPT = dedent("""
+    You are a research assistant for Adam Sorrenti, a Master's student in Computer
+    Science (AI specialization) at Toronto Metropolitan University.
+
+    Adam's research portfolio, in order of priority and relevance:
+    1. Resume / background — who Adam is, his experience and skills
+    2. Log Parsing (arXiv:2602.07698) — seq2seq models for automated log parsing
+    3. Lock Prediction (arXiv:2506.23985) — zero-downtime database encryption
+    4. QRNG Initialization (arXiv:2408.02654) — quasirandom weight init for neural networks
+    5. SoundSeg / Vocal Segmentation (arXiv:2405.20059) — U-Net vocal source separation
+
+    When answering questions, prioritize information in the order listed above unless the
+    question is specifically about a particular paper. Always ground your answers in the
+    provided document chunks and cite your sources. Be concise, accurate, and accessible
+    to a technical audience including hiring managers and AI leaders.
+""").strip()
 
 
 # ── API Key ──────────────────────────────────────────────────────────────────
@@ -138,9 +158,10 @@ def load_all_chunks() -> tuple[list[str], list[dict]]:
     """Return (chunks, metadata) for every document in docs/."""
     all_chunks: list[str] = []
     all_meta: list[dict] = []
-    for txt_file in sorted(DOCS_DIR.glob("*.txt")):
-        doc_id = txt_file.stem
-        info = PAPERS.get(doc_id, {"title": doc_id, "short": doc_id, "year": 0})
+    for doc_id, info in PAPERS.items():
+        txt_file = DOCS_DIR / f"{doc_id}.txt"
+        if not txt_file.exists():
+            continue
         text = _load_document(txt_file)
         chunks = _chunk_text(text)
         for i, chunk in enumerate(chunks):
@@ -549,12 +570,12 @@ def main():
                 st.warning("No relevant chunks found. Try broadening your paper filter.")
                 return
 
-            system_prompt = dedent("""\
-                You are a research assistant for Adam Sorrenti's academic work.
+            system_prompt = SYSTEM_PROMPT + dedent("""
+
                 Answer the user's question using ONLY the provided documents.
                 Be precise, cite specific results (metrics, numbers) when available,
                 and indicate which paper each fact comes from.
-            """)
+            """).rstrip()
 
             with st.spinner("Generating answer with Cohere RAG…"):
                 result = chat_rag(co, query, results, system=system_prompt)
@@ -623,10 +644,10 @@ def main():
                 st.warning("No relevant chunks found.")
                 return
 
-            system_prompt = dedent("""\
-                You are a research synthesis assistant analyzing Adam Sorrenti's body
-                of academic work. Your job is to find connections, shared themes,
-                contrasts, and overarching narratives across multiple papers.
+            system_prompt = SYSTEM_PROMPT + dedent("""
+
+                Your job is to find connections, shared themes, contrasts, and
+                overarching narratives across multiple papers.
 
                 Guidelines:
                 - Reference specific papers by name when making claims.
@@ -634,7 +655,7 @@ def main():
                   datasets, and findings.
                 - Be analytical, not just descriptive — draw insight from the connections.
                 - Use specific numbers and results where relevant.
-            """)
+            """).rstrip()
 
             with st.spinner("Synthesizing across papers…"):
                 result = chat_rag(co, query, all_results, system=system_prompt)
