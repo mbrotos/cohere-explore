@@ -444,7 +444,7 @@ def main():
     )
     _inject_meta_tags()
 
-    st.title("🔬 Research Paper Q&A")
+    st.title("🔬 Adam Q&A")
     st.markdown(
         "<p style='color:#9ca3af; font-size:0.85rem; margin-bottom:0.25rem;'>"
         "Powered by Cohere embed-v4.0 → rerank-v4.0-pro → command-a-03-2025 &nbsp;·&nbsp; "
