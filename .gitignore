@@ -42,7 +42,7 @@ htmlcov/
 .nox/
 .coverage
 .coverage.*
-.cache
+#.cache
 nosetests.xml
 coverage.xml
 *.cover
@@ -170,6 +170,9 @@ cython_debug/
 # Ruff stuff:
 .ruff_cache/
 
+# Embedding cache — committed so Streamlit Cloud skips re-embedding
+# .cache/
+
 # PyPI configuration file
 .pypirc
 
@@ -181,3 +184,4 @@ cython_debug/
 .cursorindexingignore
 
 fern/
+.DS_Store

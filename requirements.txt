@@ -1,0 +1,4 @@
+cohere>=5.0.0
+streamlit>=1.40.0
+python-dotenv>=1.0.0
+numpy>=1.26.0

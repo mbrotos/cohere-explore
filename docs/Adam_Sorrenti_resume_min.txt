@@ -1,0 +1,145 @@
+Adam Sorrenti
+adamsorrenti8@gmail.com | +1 (647) 525-8773 | linkedin.com/in/adam-sorrenti | github.com/mbrotos
+
+Education
+• Toronto Metropolitan University (formerly Ryerson University)
+Master of Science in Computer Science, Specialization in Artificial Intelligence, Thesis-based
+
+Toronto, ON
+Sept 2023 - Jan 2026
+
+• Thesis: On Sequence-to-Sequence Models for Automated Log Parsing; focused on systematic evaluation and
+
+scalability trade-offs across seq2seq architectures. Recognized with a nomination for TMU’s Governor General’s
+Gold Medal.
+• Vector Scholarship in AI 2023-24: $17,500 merit-based scholarship from the Vector Institute to recognize top
+candidates pursuing graduate studies in AI.
+
+• Toronto Metropolitan University
+Bachelor of Science (Hons.) in Computer Science; Minor in Philosophy; cGPA: 4.02/4.33
+
+Toronto, ON
+Sept 2018 - Apr 2023
+
+• Michel Jr Julien Award: $5,000 award for academic excellence, community/research involvement, and my
+equity-deserving pursuit of a degree in a Computer Science Program.
+• Department of Computer Science Award: $500 award for top marks in Computer Science I & II.
+
+Experience
+• IBM
+IBM Center for Advanced Studies (CAS) Visiting Researcher
+
+Markham, ON
+Nov 2024 - Dec 2025
+
+• Enterprise Sequence Modeling: Developed deep learning sequence models (Transformer, LSTM) to predict
+
+IBM Db2 lock sequences from TPC-C lock event logs; ran ablations across prediction horizons and granularities,
+outperforming a naive baseline (up to 66% page-level accuracy).
+• Distributed Training & HPC: Scaled PyTorch training on Digital Research Alliance of Canada (Compute
+Canada) NVIDIA A100 clusters via Slurm; ran reproducible experiment sweeps and iterated quickly on
+training/debugging issues.
+
+• Intuit Inc.
+Applied AI Scientist Intern
+
+Toronto, ON
+May 2025 - Aug 2025
+
+• Project Driver: Owned end-to-end experimentation for a new predictive capability in Canada’s Turbo Tax
+
+Online, recommending relevant and minimally complex tax forms from prior-year user tax data.
+• Product Focus: Built and integrated an XGBoost recommender using discrete, continuous, and BERT-embedded
+text features; implemented offline evaluation and delivered to pre-production.
+• A/B Testing: Built a delayed-reward multi-armed bandit simulation using real-world A/B test data; analyzed
+results and iterated on objective metrics (S2C time, incremental revenue).
+
+• Government of Manitoba & AI4PH @ University of Toronto
+Applied AI Scientist Intern
+
+Toronto, ON
+May 2024 - Aug 2024
+
+• Synthetic Data Generation: Built a generative modeling pipeline to produce synthetic data and insights for
+
+public health, emphasizing privacy, equity, and risk mitigation for 1.4 million Manitobains.
+• Generative Modelling: Implemented and trained a Variational Autoencoder (VAE); ran ablations over latent
+sampling/interpolation and evaluated statistically (e.g., spherical interpolation, KL divergence).
+• Differential Privacy: Explored the application of differential privacy to deep learning optimization algorithms
+like stochastic gradient descent (SGD) and Adam.
+
+• Synaptive Medical
+Machine Learning Engineer Intern
+
+Toronto, ON
+May 2023 - Aug 2023
+
+• Surgical Instrument Segmentation: Implemented and debugged U-Net-based convolutional neural networks
+
+for surgical instrument segmentation in support of advanced medical device innovation.
+• End-to-End ML Life Cycle: Collaborated with domain experts across the end-to-end ML lifecycle, emphasizing
+reproducible experiments, hyperparameter selection, deployment, and visualization.
+
+• IBM
+Backend Software Engineer Intern
+
+Markham, ON
+May 2021 - Aug 2022
+
+• TeamInsight: Developed and maintained an internal headcount tool using DB2, Express.js, Reactjs, and Node.js.
+• DevOps: Proposed and implemented database version control of DDLs using DB2 extraction tooling and git.
+• Analytics: Configured a Nginx server to log REST API endpoint response times as an objective measure of
+backend performance. This initiative helped identify +4 hrs/wk of inefficient backend compute.
+• Continuous Integration: Expanded automation within the team’s Continuous Integration pipeline using Travis.
+
+• Toronto Metropolitan University
+Mobile Application Developer
+
+Toronto, ON
+May 2020 - Apr 2021
+
+• Outreach: Participated in a development team of senior and graduate students to deliver and maintain a mobile
+app that served more than 2,000 students campus-wide.
+• Notifications: Built a service for sending email, push and in-app notifications. Involved in features such as
+delivery time optimization, tracking, and grouping. Created an admin dashboard to run batch CRM marketing
+campaigns.
+
+Selected Publications
+• Adam Sorrenti, Andriy Miranskyy. (2026). On Sequence-to-Sequence Models for Automated Log Parsing. Manuscript
+under review at Information and Software Technology. https://arxiv.org/abs/2602.07698
+
+• Mohamed Sami Rakha, Adam Sorrenti, Greg Stager, Walid Rjaibi, Andriy Miranskyy. (2025). Lock Prediction for
+Zero-Downtime Database Encryption. Manuscript under review at International Conference on Data Engineering
+(ICDE). https://arxiv.org/abs/2506.23985
+• Andriy Miranskyy, Adam Sorrenti, Viral Thakar. (2024). On Using Quasirandom Sequences in Machine Learning for
+Model Weight Initialization. Manuscript under review at IEEE Transactions on Pattern Analysis and Machine
+Intelligence. https://arxiv.org/abs/2408.02654
+
+Service
+• Causality and Large Models @ NeurIPS 2024: https://calm-workshop-2024.github.io/team/#reviewers
+• NSERC CREATE program for Responsible AI: Participated in highly qualified personnel training lectures.
+• Teaching/Lab Assistant @ TMU: Software Tools for Startups (CPS 847). This course discussed core tools,
+frameworks, and packages used by modern startups.
+• CASCON x EVOKE 2021 Conference Volunteer: Supported academic/industry speakers prior to presentations.
+
+Projects
+• CIFAR DLRL Summer School 2024: Selective 10-day program in deep learning and reinforcement learning
+(DL/RL); topics included geometric computer vision, graph neural networks, and scaling laws.
+
+• Spectral Mapping of Singing Voices: Convolutional neural network-based audio source separation (demixing) using
+spectral segmentation. https://github.com/mbrotos/SoundSeg
+• Claude SAT Solver with Tool Use: Using Anthropic’s Claude 3 Opus to solve SAT (Boolean Satisfiability)
+problems with symbolic tool use. https://github.com/mbrotos/claude_sat_solver
+• 3rd Neuro-Symbolic AI Summer School @ NeSy 2024: Lecture series on neuro-symbolic AI:
+interpretability/controllability, sample efficiency (less data/compute), and out-of-distribution generalization via
+reasoning. https://neurosymbolic.github.io/nsss2024/
+• Dynamic Exploration in Type-GBFS: A framework on top of Type-GBFS in the Fast Downward Planning System,
+allowing us to dynamically update the probability of ignoring the heuristic.
+https://github.com/mbrotos/downward-dynamic-explore
+
+Skills
+• Languages: Python, R, LaTeX, JavaScript, C/C++, C#, SQL, Scala
+• Technologies: PySpark, TensorFlow, PyTorch, Transformers, Distributed Training, Evaluation, SLURM, Docker,
+Qiskit, Weights & Biases, MLOps, GPU, AWS, Azure, Google Cloud Platform, Hadoop, SageMaker, LLM
+
+
