@@ -383,8 +383,66 @@ def render_citations(result: dict):
                     st.text(result["documents"][idx]["data"]["snippet"][:600] + "…")
 
 
+_APP_URL = "https://mbrotos-cohere-explore.streamlit.app/"
+_OG_DESCRIPTION = (
+    "Ask questions about Adam Sorrenti's published research — "
+    "log parsing, lock prediction, QRNG initialization, and audio source separation. "
+    "Powered by Cohere embed-v4.0 → rerank-v4.0-pro → command-a-03-2025 with inline citations."
+)
+
+
+def _inject_meta_tags() -> None:
+    """Inject Open Graph & Twitter Card meta tags into <head> via JS.
+
+    Streamlit doesn't expose head-level meta injection natively, so we
+    append tags from JavaScript. Works for Slack, Discord, iMessage, and
+    most modern link unfurlers that execute lightweight JS.
+    """
+    st.markdown(
+        f"""
+        <script>
+        (function() {{
+            const tags = [
+                // Open Graph
+                {{name: "description",        content: "{_OG_DESCRIPTION}"}},
+                {{property: "og:type",         content: "website"}},
+                {{property: "og:url",          content: "{_APP_URL}"}},
+                {{property: "og:title",        content: "Research Paper Q&A — Adam Sorrenti"}},
+                {{property: "og:description",  content: "{_OG_DESCRIPTION}"}},
+                // Twitter Card
+                {{name: "twitter:card",        content: "summary"}},
+                {{name: "twitter:title",       content: "Research Paper Q&A — Adam Sorrenti"}},
+                {{name: "twitter:description", content: "{_OG_DESCRIPTION}"}},
+            ];
+            tags.forEach(attrs => {{
+                const existing = document.querySelector(
+                    attrs.property
+                        ? `meta[property="${{attrs.property}}"]`
+                        : `meta[name="${{attrs.name}}"]`
+                );
+                const el = existing || document.createElement("meta");
+                Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+                if (!existing) document.head.appendChild(el);
+            }});
+        }})();
+        </script>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def main():
-    st.set_page_config(page_title="Research Q&A — Adam Sorrenti", page_icon="🔬", layout="wide")
+    st.set_page_config(
+        page_title="Research Paper Q&A — Adam Sorrenti",
+        page_icon="🔬",
+        layout="wide",
+        menu_items={
+            "Get help": "https://github.com/mbrotos/cohere-explore",
+            "Report a bug": "https://github.com/mbrotos/cohere-explore/issues",
+            "About": "RAG-powered Q&A over Adam Sorrenti's research, built with Cohere's retrieval stack.",
+        },
+    )
+    _inject_meta_tags()
 
     st.title("🔬 Research Paper Q&A")
     st.caption(
