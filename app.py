@@ -439,13 +439,19 @@ def main():
         st.markdown("---")
         st.subheader("Retrieval")
         top_k = st.slider("Dense retrieval (top-k)", 5, 50, TOP_K_RETRIEVE)
+        st.caption("Number of candidate chunks fetched via cosine similarity. Higher = broader recall, slower reranking.")
         top_n = st.slider("Rerank (top-n)", 2, 20, TOP_N_RERANK)
+        st.caption("Top chunks kept after reranking. These are passed as context to the LLM — more means richer context but higher token usage.")
 
     co = cohere.ClientV2(api_key=api_key)
 
     # ── Load data ────────────────────────────────────────────────────────
     chunks, meta = load_all_chunks()
     embeddings = get_chunk_embeddings(co, tuple(chunks))
+
+    # ── Session state init ───────────────────────────────────────────────
+    if "qa_query" not in st.session_state:
+        st.session_state.qa_query = ""
 
     # ── Mode: Paper Q&A ─────────────────────────────────────────────────
     if mode == "📖 Paper Q&A":
@@ -458,11 +464,18 @@ def main():
             "How do Transformer and LSTM models compare for lock sequence prediction?",
             "What datasets were used across the different studies?",
         ]
-        with st.expander("💡 Example questions"):
-            for q in example_qs:
-                st.markdown(f"- {q}")
 
-        query = st.text_input("Your question:", key="qa_input")
+        st.markdown("**💡 Example questions — click to ask:**")
+        for i, q in enumerate(example_qs):
+            if st.button(q, key=f"qa_ex_{i}", use_container_width=True):
+                st.session_state.qa_query = q
+                st.rerun()
+
+        query = st.text_input(
+            "Or type your own question:",
+            key="qa_query",
+            placeholder="Ask anything about the research papers…",
+        )
 
         if query:
             with st.spinner("Retrieving & reranking…"):
@@ -512,11 +525,21 @@ def main():
             "Summarize each paper in 2-3 sentences, then identify overarching research themes.",
         ]
 
-        preset = st.selectbox("Choose a synthesis prompt or write your own:", ["Custom…"] + synthesis_prompts)
-        if preset == "Custom…":
-            query = st.text_area("Your synthesis question:", height=100, key="synth_input")
-        else:
-            query = preset
+        if "synth_query" not in st.session_state:
+            st.session_state.synth_query = ""
+
+        st.markdown("**💡 Suggested prompts — click to use:**")
+        for i, p in enumerate(synthesis_prompts):
+            if st.button(p, key=f"synth_ex_{i}", use_container_width=True):
+                st.session_state.synth_query = p
+                st.rerun()
+
+        query = st.text_area(
+            "Or write your own synthesis question:",
+            key="synth_query",
+            height=100,
+            placeholder="Ask the model to find themes, contrasts, or connections across papers…",
+        )
 
         if st.button("Synthesize", type="primary") and query:
             if len(selected_papers) < 2:
