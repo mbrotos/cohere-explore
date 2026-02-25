@@ -1,5 +1,7 @@
 # cohere-explore
 
+Exploring Cohere's developer environment from "Hello, World!" to a custom usecase prototype.
+
 ## Setup
 
 ```bash
