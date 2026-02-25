@@ -518,11 +518,11 @@ def main():
         st.markdown("#### Ask questions about Adam Sorrenti's research papers")
 
         example_qs = [
-            "What problems is this research trying to solve, and why do they matter?",
-            "What were the most significant results or findings across the papers?",
-            "How does AI help with software log analysis, and what did this research find?",
-            "What is zero-downtime database encryption and how does deep learning help achieve it?",
-            "How does AI separate a singer's voice from the music in a song?",
+            "What problems is Adam's research trying to solve, and why do they matter?",
+            "What were Adam's most significant results or findings across his papers?",
+            "How does Adam apply AI to software log analysis, and what did he find?",
+            "What is zero-downtime database encryption and how does Adam use deep learning to help achieve it?",
+            "How does Adam's research use AI to separate a singer's voice from the music in a song?",
         ]
 
         st.markdown("**💡 Example questions — click to ask:**")
@@ -579,8 +579,8 @@ def main():
 
         synthesis_prompts = [
             "What kind of researcher is Adam — what themes and values run through his work?",
-            "What real-world impact could this body of research have in industry?",
-            "How does this research demonstrate both technical depth and practical relevance?",
+            "What real-world impact could Adam's body of research have in industry?",
+            "How does Adam's research demonstrate both technical depth and practical relevance?",
             "What are the biggest open problems Adam's work is working toward solving?",
             "Give me a one-paragraph pitch for Adam's research portfolio aimed at a technical hiring manager.",
         ]
