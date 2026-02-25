@@ -2,7 +2,8 @@
 
 Interactive RAG-powered Q&A over my published research, built with [Cohere's](https://cohere.com/) retrieval stack. Ask questions about individual papers or synthesize themes across my body of work — all grounded with inline citations.
 
-**[Try it live →](https://cohere-explore-mbrotos.streamlit.app)** · **[Portfolio →](https://mbrotos.github.io)**
+### 🚀 [Try it live!](https://mbrotos-cohere-explore.streamlit.app/)
+
 
 ## Stack
 
