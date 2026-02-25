@@ -467,9 +467,13 @@ def main():
 
     st.title("🔬 Adam Q&A")
     st.markdown(
-        "<p style='color:#9ca3af; font-size:0.85rem; margin-bottom:0.25rem;'>"
+        "<p style='color:#9ca3af; font-size:1rem; margin-bottom:0.25rem;'>"
         "Powered by Cohere embed-v4.0 → rerank-v4.0-pro → command-a-03-2025 &nbsp;·&nbsp; "
         "<a href='https://github.com/mbrotos/cohere-explore' style='color:#9ca3af;'>GitHub</a>"
+        "</p>"
+        "<p style='color:#6b7280; font-size:1rem; margin-top:0;'>"
+        "⚠️ AI-generated responses may contain inaccuracies and do not necessarily reflect the author's views. "
+        "Demo only — consult the <a href='https://arxiv.org/search/?searchtype=author&query=Sorrenti%2C+Adam' style='color:#6b7280;'>original works</a> for authoritative information."
         "</p>",
         unsafe_allow_html=True,
     )
