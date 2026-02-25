@@ -445,10 +445,12 @@ def main():
     _inject_meta_tags()
 
     st.title("🔬 Research Paper Q&A")
-    st.caption(
-        "Powered by Cohere **embed-v4.0 → rerank-v4.0-pro → command-a-03-2025** · "
-        "Ask questions about Adam Sorrenti's research papers or synthesize themes across them. "
-        "· [GitHub](https://github.com/mbrotos/cohere-explore)"
+    st.markdown(
+        "<p style='color:#9ca3af; font-size:0.85rem; margin-bottom:0.25rem;'>"
+        "Powered by Cohere embed-v4.0 → rerank-v4.0-pro → command-a-03-2025 &nbsp;·&nbsp; "
+        "<a href='https://github.com/mbrotos/cohere-explore' style='color:#9ca3af;'>GitHub</a>"
+        "</p>",
+        unsafe_allow_html=True,
     )
 
     # ── API key: Streamlit secrets (cloud) → .env (local) ────────────
@@ -513,7 +515,7 @@ def main():
 
     # ── Mode: Paper Q&A ─────────────────────────────────────────────────
     if mode == "📖 Paper Q&A":
-        st.markdown("### Ask a question about the research papers")
+        st.markdown("#### Ask questions about Adam Sorrenti's research papers")
 
         example_qs = [
             "What architectures were compared for log parsing and which performed best?",
