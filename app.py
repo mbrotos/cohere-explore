@@ -518,11 +518,11 @@ def main():
         st.markdown("#### Ask questions about Adam Sorrenti's research papers")
 
         example_qs = [
-            "What architectures were compared for log parsing and which performed best?",
-            "How does the U-Net model separate vocals from music?",
-            "What is the role of QRNG in neural network weight initialization?",
-            "How do Transformer and LSTM models compare for lock sequence prediction?",
-            "What datasets were used across the different studies?",
+            "What problems is this research trying to solve, and why do they matter?",
+            "What were the most significant results or findings across the papers?",
+            "How does AI help with software log analysis, and what did this research find?",
+            "What is zero-downtime database encryption and how does deep learning help achieve it?",
+            "How does AI separate a singer's voice from the music in a song?",
         ]
 
         st.markdown("**💡 Example questions — click to ask:**")
@@ -578,11 +578,11 @@ def main():
         )
 
         synthesis_prompts = [
-            "What deep learning architectures appear across these papers and how are they used differently?",
-            "What shared evaluation methodologies or metrics connect these studies?",
-            "How do these papers collectively advance the state of sequence modeling?",
-            "What common challenges or limitations are discussed across this body of work?",
-            "Summarize each paper in 2-3 sentences, then identify overarching research themes.",
+            "What kind of researcher is Adam — what themes and values run through his work?",
+            "What real-world impact could this body of research have in industry?",
+            "How does this research demonstrate both technical depth and practical relevance?",
+            "What are the biggest open problems Adam's work is working toward solving?",
+            "Give me a one-paragraph pitch for Adam's research portfolio aimed at a technical hiring manager.",
         ]
 
         if "synth_query" not in st.session_state:
